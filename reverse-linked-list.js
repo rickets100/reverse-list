@@ -130,39 +130,31 @@ function reverseLinkedList(ll) {
   return ll;
 } // function
 
-function forTesting(aList) {
-  let temp = reverseLinkedList(aList);
-  // console.log(temp.next.next.next.next.next.next.next.value);
-  console.log('temp', temp);
-  // for testing
-  // while (temp) {
-  //   console.log(' current value', temp.value);
-  //   temp = temp.next;
-  // }
+
+// ===== REVERSES BY SWAPPING VALUES ONLY, THEN REASSIGNING HEAD =====
+function reverseDoublyLinkedList(ll) {
+  let tracker1 = head;
+  let tracker2 = head.next;
+  let tempValue;
+
+  // empty list or only one item
+  if (!ll) return null;
+  if (ll.next == null) return ll;
+
+  while(tracker2.next) {
+    tracker2.prev = tracker1;
+    tracker1 = tracker2;
+    tracker2 = tracker2.next;
+  }
+  tracker2.prev = tracker1;
+  tracker1 = head;
+
+  while (tracker1 != tracker2 && tracker1.prev != tracker2) {
+    tempValue = tracker1.value;
+    tracker1.value = tracker2.value;
+    tracker2.value = tempValue;
+    tracker1 = tracker1.next;
+    tracker2 = tracker2.prev;
+  } // while
+  return head;
 } // function
-
-// function reverseLinkedList(ll) {
-//   let tracker1 = head;
-//   let tracker2 = head.next;
-//
-//   while(tracker2.next) {
-//     tracker2.prev = tracker1;
-//     tracker1 = tracker2;
-//     tracker2 = tracker2.next;
-//   }
-//   tracker2.prev = tracker1;
-//   tracker1 = head;
-//
-//
-//   while (tracker1 != tracker2 && tracker1.prev != tracker2) {
-//     console.log('tracker1', tracker1.value);
-//     console.log('tracker2', tracker2.value);
-//     tracker1 = tracker1.next;
-//     tracker2 = tracker2.prev;
-//   }
-// }
-
-// reverseLinkedList(odd);
-// reverseLinkedList(even);
-
-forTesting(threeItems);
