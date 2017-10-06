@@ -1,3 +1,4 @@
+// ===== SAMPLE DATA FOR TESTING =====
 let odd = {
   value: 1,
   prev: null,
@@ -91,6 +92,7 @@ let oneItem = {
 let head = twoItems;
 
 
+// ===== REVERSES BY SWAPPING ENTIRE NODES =====
 function reverseLinkedList(ll) {
   let  a, b, c;
 
